@@ -4,8 +4,9 @@ import 'Tabs/chatScreen.dart';
 import 'Tabs/statusScreen.dart';
 import 'Tabs/callsScreen.dart';
 
+
 class WhatsAppHome extends StatefulWidget {
-  var cameras;
+  
   WhatsAppHome();
 
   @override
@@ -25,8 +26,9 @@ class _WhatsAppHomeState extends State<WhatsAppHome>
 
   @override
   Widget build(BuildContext context) {
-    
+    final key = new GlobalKey<ScaffoldState>();
     return new Scaffold(
+      key: key,
       appBar: new AppBar(
         title: new Text("WhatsApp"),
         elevation: 0.7,
@@ -62,26 +64,30 @@ class _WhatsAppHomeState extends State<WhatsAppHome>
           new CallsScreen(),
         ],
       ),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: new Builder(
+        builder: (BuildContext context){
+          return new FloatingActionButton(
         backgroundColor: Theme.of(context).accentColor,
         child: new Icon(
           Icons.message,
           color: Colors.white,
         ),
         onPressed:() {
-                    Scaffold.of(context).showSnackBar(
-                          new SnackBar(
-                            content: new Text("Added to favorite"),
-                            action: new SnackBarAction(
-                              label: "UNDO",
-                              onPressed: () => Scaffold.of(context).hideCurrentSnackBar(),
-                            ),
-                          ),
-                        );
+          key.currentState.showSnackBar(new SnackBar(
+                content: new Text("Not implemented yet...",style: new TextStyle(fontSize: 14.0),),
+              ));
+                   
                         },
-      ),
+      );
+        }
+          ),
+        
+      );
 
-    );
+  
     
   }
-      }
+    }
+
+
+      
