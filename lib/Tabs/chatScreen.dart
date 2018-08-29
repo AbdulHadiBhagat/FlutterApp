@@ -9,15 +9,17 @@ class ChatScreen extends StatefulWidget {
   }
 }
 
+
 class ChatScreenState extends State<ChatScreen> {
 
-  
+  List<ChatModel> tempList;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
          itemCount: list.length,
          itemBuilder: (context,i)=> Column(
            children: <Widget>[
+             
              new Divider(
                height: 10.0,
 
@@ -35,7 +37,11 @@ class ChatScreenState extends State<ChatScreen> {
                    new Text(list[i].time,style: new TextStyle(color: Colors.grey,fontSize: 14.0),),
 
                  ],
+                 
                ),
+               onLongPress: (){
+                 print(list[i].message);
+               },
                subtitle: new Container(
                  padding: const EdgeInsets.only(top: 5.0),
                  child: new Text(list[i].message,style: new TextStyle(color: Colors.grey,fontSize: 15.0),),
